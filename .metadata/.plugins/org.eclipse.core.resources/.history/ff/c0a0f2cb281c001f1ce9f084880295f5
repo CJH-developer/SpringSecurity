@@ -1,0 +1,27 @@
+package com.project.myWeb.security;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.web.SecurityFilterChain;
+
+@Configuration // 설정 파일
+@EnableWebSecurity // 이 설정 파일을 시큐리티 필터에 등록
+public class SecurityConfig {
+	
+	@Bean
+	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
+		
+		//csrf 토큰 비활성화 : 페이지 복제 방지
+		http.csrf(csrf -> csrf.disable());
+		
+		// 권한 설정!!
+		http.authorizeRequests( (authorize -> authorize.anyRequest().authenticated() ) );  
+		
+		// 시큐리티 기반의 폼 로그인을 사용
+		http.formLogin();
+		
+		return http.build();
+	}
+}

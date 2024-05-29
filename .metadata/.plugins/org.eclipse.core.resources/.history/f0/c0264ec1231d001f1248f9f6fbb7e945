@@ -1,0 +1,72 @@
+package com.project.myWeb.security;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+
+@Configuration // 설정 파일
+@EnableWebSecurity // 이 설정 파일을 시큐리티 필터에 등록
+public class SecurityConfig {
+	
+	@Bean
+	public BCryptPasswordEncoder encoder() {
+		return new BCryptPasswordEncoder();
+	}
+	
+	@Autowired
+	private MyUserDetailsService myUserDetailsService;
+	
+	@Bean
+	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
+		
+		
+		http.csrf().disable();
+		
+		
+		http.authorizeRequests( (authorize) -> authorize
+				.antMatchers("/all").authenticated()
+				.antMatchers("/user/**").hasAnyRole("USER", "ADMIN", "TESTER")
+				.antMatchers("/admin/**").hasRole("ADMIN")
+				.anyRequest().permitAll()
+				)
+		; 
+		
+		http.formLogin()
+			.loginPage("/login")
+			.loginProcessingUrl("/loginForm") //로그인을 시도하는 경로 작성
+			.defaultSuccessUrl("/hello") // 로그인 성공 후 이동하고자 하는 경로 
+			.failureHandler(authenticationFailureHandler())
+			//.failureUrl("/login?err=true")
+			.and()
+			.exceptionHandling().accessDeniedPage("/deny") // 권한이 없을 시에 처리
+			.and()
+			.logout().logoutUrl("/myLogout").logoutSuccessUrl("/all")
+			//.usernameParameter("id") //username이 아닌 다른 값으로 변경 가능
+			//.passwordParameter(null) // pasword 가 아닌 다른 값으로 변경
+			; 
+		
+		// 자동 로그인
+		http.rememberMe()
+			.key("jaehongCookies")
+			.tokenValiditySeconds(3600) // 1시간
+			.rememberMeParameter("remember-me") // 화면에서 전달되는 checkbox의 파라미터 값
+			.userDetailsService(null) // remeber me 토큰이 존재할 때 실행시킬 서비스 
+			
+		return http.build();
+	}
+	
+	// 인증 실패 핸들러
+	@Bean
+	public AuthenticationFailureHandler authenticationFailureHandler() {
+		CustomAuthenticationFailure custom = new CustomAuthenticationFailure();
+		custom.setRedirectURL("/login?err=true");
+		
+		return custom;
+	}
+}

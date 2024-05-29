@@ -1,0 +1,13 @@
+server.port=8282
+
+# mybatisë°ì´í°ë² ì´ì¤ ê°ë°íê²½
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.datasource.url=jdbc:mysql://localhost:3306/spring?serverTimezone=Asia/Seoul
+spring.datasource.username=spring
+spring.datasource.password=spring
+
+
+mybatis.type-aliases-package=com.project.SpringSecurity.command
+# SQL mapperìì¹
+mybatis.mapper-locations=classpath:mapper/*.xml
+출처: https://hong-study.tistory.com/311 [홍이의 공부방:티스토리]

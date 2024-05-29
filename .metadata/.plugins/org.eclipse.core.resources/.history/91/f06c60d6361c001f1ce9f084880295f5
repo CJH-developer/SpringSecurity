@@ -1,0 +1,5 @@
+package com.project.myWeb.member;
+
+public interface MemberMapper {
+
+}

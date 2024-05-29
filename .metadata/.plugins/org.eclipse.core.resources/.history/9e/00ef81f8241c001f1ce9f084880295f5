@@ -1,0 +1,5 @@
+package com.project.myWeb.controller;
+
+public class HomeController {
+
+}

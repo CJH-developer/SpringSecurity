@@ -1,0 +1,63 @@
+package com.project.myWeb.security;
+
+import java.util.Collection;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import com.project.myWeb.command.MemberVO;
+
+public class MyUserDetails implements UserDetails {
+
+	// 로그인해서 조회한 MemberVO 객체 
+	private MemberVO memberVO;
+	
+	
+	// 반드시 UserVO 객체를 멤버변수로 담고 생성
+	public MyUserDetails(MemberVO vo) {
+		
+	}
+	
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		
+		return null;
+	}
+
+	@Override
+	public String getPassword() {
+		
+		return null;
+	}
+
+	@Override
+	public String getUsername() {
+		
+		return null;
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		
+		return false;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		
+		return false;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		
+		return false;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		
+		return false;
+	}
+
+}

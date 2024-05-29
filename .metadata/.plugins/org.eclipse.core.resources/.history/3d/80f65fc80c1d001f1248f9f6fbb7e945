@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h3>hello</h3>
+	
+	<!-- 인증 된다면 true. 아니면 false -->
+	<div sec:authorize="isAuthenticated()">
+		[[${ #authentication }]]
+	</div>
+</body>
+</html>

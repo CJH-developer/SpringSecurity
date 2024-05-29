@@ -1,0 +1,50 @@
+package com.project.myWeb.controller;
+
+import org.springframework.security.access.prepost.PostAuthorize;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.project.myWeb.command.MemberVO;
+
+@Controller
+public class HomeController {
+
+	@GetMapping("/hello")
+	public String hello() {
+		return "hello";
+	}
+	
+	@GetMapping("/all")
+	public String all() {
+		return "all";
+	}
+	
+	@GetMapping("/join")
+	public String join() {
+		return "join";
+	}
+	
+	@GetMapping("/login")
+	public String login() {
+		return "login";
+	}
+	
+	@GetMapping("/user/mypage")
+	public @ResponseBody String userMypage() {
+		return "REST 유저 페이지";
+	}
+	
+	@GetMapping("/admin/mypage")
+	public @ResponseBody String adminMypage() {
+		return "REST 어드민 페이지";
+	}
+	
+	@PostMapping("/joinForm")
+	public String joinForm(MemberVO VO) {
+		return "redirect:/login";
+	}
+	
+	
+}

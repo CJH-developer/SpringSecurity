@@ -1,0 +1,7 @@
+package com.project.myWeb.security;
+
+import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
+
+public class CustomAuthenticationFailure extends SimpleUrlAuthenticationFailureHandler{
+
+}

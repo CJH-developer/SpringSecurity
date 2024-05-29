@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;myWeb/src/main/resources/templates/role.html&apos; to &apos;all.html&apos;" description="Rename resource &apos;role.html&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/main/resources/templates/role.html" name="all.html" stamp="1716811356195" updateReferences="true"/>
+</session>

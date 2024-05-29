@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename compilation unit &apos;com.project.myWeb.security.MyUserDetail.java&apos; to &apos;MyUserDetails.java&apos;&#x0D;&#x0A;- Original project: &apos;SpringSecurity&apos;&#x0D;&#x0A;- Original element: &apos;com.project.myWeb.security.MyUserDetail.java&apos;&#x0D;&#x0A;- Renamed element: &apos;com.project.myWeb.security.MyUserDetails.java&apos;" description="Rename compilation unit &apos;MyUserDetail.java&apos;" flags="2" id="org.eclipse.jdt.ui.rename.compilationunit" input="/src\/main\/java=/gradle_scope=/main=/=/gradle_used_by_scope=/main,test=/&lt;com.project.myWeb.security{MyUserDetail.java" name="MyUserDetails.java" references="false" stamp="1716910837809" version="1.0"/>
+</session>

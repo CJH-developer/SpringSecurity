@@ -1,0 +1,5 @@
+package com.project.myWeb.command;
+
+public class MemberVO {
+
+}
